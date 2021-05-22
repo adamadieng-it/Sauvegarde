@@ -1,0 +1,119 @@
+Cisco :
+
+	- user : admin@bran
+	- mdp : rhxYwxd3DCyg
+
+----------------------------------------------------------
+
+Cet exemple montre comment afficher des informations sur le VLAN spécifié:
+
+
+	bran#show interface vlan 30
+	Vlan30 is up, line protocol is up 
+	  Hardware is EtherSVI, address is 6899.cdf2.0dc1 (bia 6899.cdf2.0dc1)
+	  Internet address is 172.16.30.249/24
+	  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+		 reliability 255/255, txload 1/255, rxload 1/255
+	  Encapsulation ARPA, loopback not set
+	  Keepalive not supported 
+	  ARP type: ARPA, ARP Timeout 04:00:00
+	  Last input 00:00:00, output 00:00:00, output hang never
+	  Last clearing of "show interface" counters never
+	  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+	  Queueing strategy: fifo
+	  Output queue: 0/40 (size/max)
+	  5 minute input rate 1000 bits/sec, 1 packets/sec
+	  5 minute output rate 1000 bits/sec, 1 packets/sec
+		 332894880 packets input, 20013894717 bytes, 0 no buffer
+		 Received 0 broadcasts (0 IP multicasts)
+		 0 runts, 0 giants, 0 throttles 
+		 0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+		 27924 packets output, 4106345 bytes, 0 underruns
+		 0 output errors, 1 interface resets
+		 19 unknown protocol drops
+		 0 output buffer failures, 0 output buffers swapped out
+	bran#
+
+----------------------------------------------------------
+Commandes associées
+	
+
+show interface switchport   |  Affiche des informations sur les ports, y compris ceux des VLAN privés.
+show vlan 					|  Affiche des informations récapitulatives pour tous les VLAN.
+show vlan private-vlan		|  Affiche des informations récapitulatives pour tous les VLAN privés. 
+
+
+----------------------------------------------------------
+Cet exemple montre comment afficher la configuration en cours pour VLAN 5:
+
+# show running-config vlan 5 
+
+bran>enable
+Password: 
+bran#show running-config vlan 10
+Building configuration...
+
+Current configuration:
+end
+
+bran#show running-config vlan 30
+Building configuration...
+
+Current configuration:
+end
+
+bran#
+
+-------------------------------------------------------------------
+
+bran#show vlan 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi1/0/4, Gi1/0/5, Gi1/0/8, Gi1/0/9, Gi1/0/10, Gi1/0/11, Gi1/0/12, Gi1/0/13, Gi1/0/15, Gi1/0/23, Gi1/0/26, Gi1/0/30, Gi1/0/31, Gi1/0/39, Gi1/0/40, Gi1/0/41, Gi1/0/42, Gi1/0/45, Gi1/0/46, Te1/0/1, Te1/0/2
+10   Office Equipement                active    Gi1/0/6, Gi1/0/7, Gi1/0/17, Gi1/0/18, Gi1/0/19, Gi1/0/20, Gi1/0/21, Gi1/0/27, Gi1/0/29, Gi1/0/32, Gi1/0/33, Gi1/0/43, Gi1/0/44
+13   FB-Test                          active    
+20   Staging servers                  active    
+21   Microsoft servers                active    Gi1/0/24, Gi1/0/37
+30   Local Prod Servers               active    Gi1/0/1, Gi1/0/2
+40   SpOTTer Lab                      active    Gi1/0/36
+41   VLAN0041                         active    
+42   VLAN0042                         active    Gi1/0/35
+50   Third equipment                  active    Gi1/0/14, Gi1/0/16, Gi1/0/25, Gi1/0/34, Gi1/0/47
+60   guest                            active    
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+10   enet  100010     1500  -      -      -        -    -        0      0   
+13   enet  100013     1500  -      -      -        -    -        0      0   
+20   enet  100020     1500  -      -      -        -    -        0      0   
+21   enet  100021     1500  -      -      -        -    -        0      0   
+30   enet  100030     1500  -      -      -        -    -        0      0   
+40   enet  100040     1500  -      -      -        -    -        0      0   
+41   enet  100041     1500  -      -      -        -    -        0      0   
+42   enet  100042     1500  -      -      -        -    -        0      0   
+50   enet  100050     1500  -      -      -        -    -        0      0   
+60   enet  100060     1500  -      -      -        -    -        0      0   
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+Afficher les Informations d'un VLAN Specifique :
+-------------------------------------------------------------------
+
+
+
+

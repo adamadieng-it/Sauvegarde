@@ -1,0 +1,63 @@
+adieng@spider:/etc/ldap/scripts$ sudo ./create_ldap_person.sh Jeremie SOLIGNY jeremie.soligny
+[sudo] password for adieng: 
+jplRltcCW75dHQy9
+
+dieng@spider:/etc/ldap/scripts$ sudo ./create_ldap_person.sh jsoligny Jeremie SOLIGNY jeremie.soligny
+9VesQEOpAN8rH7my
+
+
+-------------------------------------------
+
+adieng@spider:/etc/ldap/scripts$ ldapadd -x -H ldaps://localhost -W -D "cn=admin,dc=fraudbuster,dc=mobi" -f jsoligny.ldif 
+Enter LDAP Password: 
+adding new entry "uid=jsoligny,ou=people,dc=fraudbuster,dc=mobi"
+
+adding new entry "cn=jsoligny,ou=people,ou=groups,dc=fraudbuster,dc=mobi"
+
+------------------------------------------------
+password=9VesQEOpAN8rH7my
+salt=`head -c 40 /dev/random | base64 | sed -e 's/+/./g' | cut -b 10-25`
+mkpasswd --rounds 500012 -m sha-512 --salt "${salt}" "${password}"
+
+Resultat :
+	$6$rounds=500012$5acE14SAc7DbsmK4$/xP/u2KSrE0LSd8cMRHHFxoaPMggSJ4txzuc8HJNMBCErlmGMACreahx8RB5/w/X0TLWaXxiBg1ckquTacCBt.
+	
+dn: uid=jsoligny,ou=people,dc=fraudbuster,dc=mobi
+changetype: modify
+replace: userPassword
+userPassword: $6$rounds=500012$5acE14SAc7DbsmK4$/xP/u2KSrE0LSd8cMRHHFxoaPMggSJ4txzuc8HJNMBCErlmGMACreahx8RB5/w/X0TLWaXxiBg1ckquTacCBt.
+
+
+
+
+===================================
+sudo ./create_ldap_person.sh jsoligny Jeremie SOLIGNY jeremie.soligny
+sudo ./create_ldap_person.sh jsoligny Jeremie SOLIGNY jeremie.soligny
+9SSE4a6QIau9FLbe
+================================
+ldapadd -x -H ldaps://localhost -W -D "cn=admin,dc=fraudbuster,dc=mobi" -f jsoligny.ldif
+JJqzRijoxIo49ajJ1L52Or4EcHqW4smup3uhOxymFGFcz2ljd6yFwHmyknbOQykd
+
+Enter LDAP Password: 
+adding new entry "uid=jsoligny,ou=people,dc=fraudbuster,dc=mobi"
+
+adding new entry "cn=jsoligny,ou=people,ou=groups,dc=fraudbuster,dc=mobi"
+
+Test sur Roundcube OK
+
+===========
+Le compte email de Jeremy SOLIGNY a été : 
+	email : jeremie.soligny@fraudbuster.mobi
+	id : jsoligny
+
+Il a à présent accès à :
+
+- Acccès Jenkins : jenkins-users
+- Acccès Icinga :	 (groupe icinga-analysts)
+- Acccès Grafana : grafana-viewers
+
+Mot transmis par mail à 
+
+
+=========================
+auto_accept: True

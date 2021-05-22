@@ -1,0 +1,119 @@
+#!/bin/bash
+     # Fraudbuster : ./<scriptfilename> <package_name>
+REQUIRED_PKG="$1"
+PKG_OK=$(dpkg-query --showformat='${Version}' --show $REQUIRED_PKG)
+echo Checking for $REQUIRED_PKG Version : $PKG_OK
+if [ "" = "$PKG_OK" ]; then
+     echo "Le paquet $REQUIRED_PKG n'est pas installe sur ce serveur"
+else
+     echo "Mise à jour du paquet $REQUIRED_PKG"
+     #apt update --yes $REQUIRED_PKG
+fi
+
+
+PKG_OK=$(dpkg-query --showformat='${Version}' --show $REQUIRED_PKG) if [ "" = "$PKG_OK" ]; then echo "Paquet dnsmasq non installe sur ce serveur" else echo "Maj" fi
+
+
+
+salt-run survey.hash "*" file.get_hash /etc/salt/minion survey_sort=up
+
+
+sudo salt-run -t 60 survey.hash 'sys.*' cmd.run 'lsb_release -a'
+
+sudo salt-run -t 60 survey.hash 'sys.*' cmd.run "dpkg-query -W -f='${Status} ${Version}\n' dnsmasq-base"
+
+sudo salt-run -t 60 survey.hash '*' cmd.run "dpkg-query -W -f='${Status} ${Version}\n' dnsmasq-base"
+
+
+salt -C 'I@FBConfig:services:libvirtd' cmd.run 'dpkg -l|grep dnsmasq'
+
+
+salt-run -t 60 survey.hash '*' cmd.run 'dpkg-query -W -f=\'${Status} ${Version}\n\' dnsmasq-base'
+
+
+sudo netfilter-persistent flush
+sudo netfilter-persistent start
+
+git stash
+git status
+git reverse
+git checkout -f
+git status
+git pull
+git status
+git rm -r salt/production/formulas/
+git status
+git add .gitignore formulas/services/scrumblr/systemd.sls 
+
+
+--------------------------- PILLARS --------------------------
+salt-call --local --config-dir=/tmp/kitchen/etc/salt/ --id=sys.web pillar.get scrumblr -l debug
+
+salt-call --local --config-dir=/tmp/kitchen/etc/salt/ --id=minion pillar.get scrumblr -l debug
+
+
+===========   RABBITMQ ======================
+
+
+Procédure d'arrêt/relance complet :
+
+    Stop :
+
+systemctl stop epmd.service
+systemctl stop epmd.socket
+systemctl stop rabbitmq-server
+
+    Vérification :
+
+ps aufxww |grep -E '(erl|epmd|rabb)'
+
+Vérifier qu'aucun process n'apparaît.
+
+tail -f /var/log/rabbitmq/rabbit\@<hostname>.log
+
+Vérifier que le fichier n'est pas alimenté pendant 1 minute.
+
+    Start :
+
+systemctl start rabbitmq-server
+==============================================================================
+git rebase -i 0dd3f8e
+
+================================================== GIT 
+git log --graph --all --decorate
+git log --oneline
+git rebase -i 0dd3f8e
+
+--- REBASE
+git rebase master
+git status
+git add FILENAME
+git push -f
+------
+
+Ou 
+
+git rebase -i master feature/xxxxx
+
+git branch -d feature/ad/
+git push origin --delete feature/ad/
+
+==================== MAJ
+apt-mark hold gitlab-ce
+gitlab-ce set on hold.
+
+===================
+Nasgueye2021
+
+
+======================
+
+dc:       mobi
+           |
+dc:      fraudbuster         ## (Organisation)
+         /    |      \
+ou:   People  Group   FLAP    ## (Unités d'organisation (UO) )
+      /    \            ..
+uid: ..   John              ## (données spécifiques d'UO )
+
+==========

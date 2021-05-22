@@ -1,0 +1,21 @@
+TERRAFORM
+====================
+
+Terraform est une solution de déploiement as Code. Il permet de gérer une infra sous forme de Code
+Terraform est capable de déployer sur plusieurs infrastructures. Il est :
+
+- [ ] Multi-Cloud (multiple providers)
+- [ ] Gratuit
+- [ ] Facile à lire
+- [ ] Extensible
+- [ ] S'intégre avec les outils de configuration Management (comme Ansible, SaltStack, Pupet, etc. )
+
+### Installation de Terraform 
+
+- [ ] Création de [compte AWS](https://aws.amazon.com/fr/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+    - [ ] Nom compte : diengitdevops
+    - [ ] Zone : Virginie Nord
+    - [ ] Créer un Compte nominatif (adama | AdministratorAccess  | )
+    - [ ] Alias de connexion AWS : diengdevops
+    - [ ] 
+
